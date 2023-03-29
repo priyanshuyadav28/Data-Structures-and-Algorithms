@@ -141,6 +141,42 @@ void solidStarPyramidReverse(int rowCount, int colCount) {
     }
 }
 
+void solidDiamond(int rowCount, int colCount) {
+    // Full pyramid 
+     for (int row = 0; row < rowCount; row++)
+    {
+        for (int space = 0; space < rowCount - row - 1; space++)
+        {
+            cout << " ";
+        }
+        
+        for (int col = 0; col < row + 1; col++)
+        {
+            cout << "* ";
+        }
+        
+        cout << endl;
+        /* code */
+    }
+    // Inverted Pyramid 
+    for (int row = 0; row < rowCount; row++)
+    {
+        for (int spaces = 0; spaces < row; spaces++)
+        {
+           cout << " ";
+        }
+
+        for (int col = 0; col < rowCount - row; col++)
+        {
+            cout << "* ";
+        }
+
+        cout << endl;   
+    }
+    
+}
+
+
 int main()
 {
 
@@ -156,30 +192,10 @@ int main()
     // invertedHalfPyramid(6, 0);
     // numbericHalfPyramid(5, 0);
     // numberiInvertedHalfPyramid(5, 0);
-    // solidStarPyramid(6, 0);
+    // solidStarPyramid(15, 0);
     // solidStarPyramidReverse(6, 0);
-    
+    solidDiamond(10, 0);
 
-
-
-
-
-
-
-
-
-
-    // if (cin>>n)
-    // {
-    //     cout<<"Babbar";
-    // }
-
-    // if (cout<<"Babbar")
-    // {
-    //     // cout<<"love";
-    //     cin>>n;
-    //     cout<<n;
-    // }
 
     return 0;
 }
