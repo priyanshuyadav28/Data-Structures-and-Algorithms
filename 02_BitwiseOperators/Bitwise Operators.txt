@@ -1,0 +1,44 @@
+Bitwise Operators 
+
+1. AND  (&&) 
+2. OR   (||)
+3. NOT  (~)
+4. XOR  (^)
+
+1 -> AND :- when AND operator is operated on two values then it return 1 when both the values are 1 or true and if even one value is false or 0 it will return false or 0. 
+
+example
+    a       b        (a && b)
+    0       0           0
+    0       1           0
+    1       0           0
+    1       1           1
+
+2 -> OR:- OR operator returns true or 1 even if one of the value is true 
+example
+    a       b        (a || b)
+    0       0           0
+    0       1           1
+    1       0           1
+    1       1           1
+
+    and if both are true then obviously 1 as it needs only one true value both true acts as bonus only . 
+
+3 -> NOT :- NOT operator gives reverse of the given input if the input is 0 it will return 1 and if the input in 1 it will return 0. 
+
+example
+    a        (a ~ b)
+    0           1
+    1           0
+
+
+4 -> XOR :- On same values it will return 0 and on different values it will return 1 . 
+
+example
+    a       b        (a ^ b)
+    0       0           0
+    0       1           1
+    1       0           1
+    1       1           0
+
+

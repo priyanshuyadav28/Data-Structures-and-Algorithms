@@ -369,7 +369,6 @@ void numericFullPyramid(int n)
 
 void numericHollowPyramid(int n)
 {
-
     // row loop
     for (int row = 0; row < n; row++)
     {
@@ -420,6 +419,8 @@ void numericHollowPyramid(int n)
         
     }
 }
+    
+    
     int main() {
         int n;
 
