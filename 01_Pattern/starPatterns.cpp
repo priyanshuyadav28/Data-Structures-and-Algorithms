@@ -391,11 +391,11 @@ void numericHollowPyramid(int n)
                     cout << start;
                     start += 1;
                 }
-                else {
-                    // odd 
+                else
+                {
+                    // odd
                     cout << " ";
                 }
-                
             }
             else
             {
@@ -403,46 +403,233 @@ void numericHollowPyramid(int n)
                 if (cols == 0)
                 {
                     cout << 1;
-                } 
+                }
                 else if (cols == 2 * row + 1 - 1)
                 {
                     cout << row + 1;
                 }
 
-                else {
+                else
+                {
                     cout << " ";
                 }
             }
-           
         }
-         cout << endl;
-        
+        cout << endl;
     }
 }
-    
-    
-    int main() {
-        int n;
 
-        // int numberOfRow = 4;
-        // int numberOfCol = 4;
-
-        // solidRectangle(3, 4);
-        // squarePattern(4, 4);
-        // hollowRectagle(7, 9);
-        // halfPyramid(6, 0);
-        // invertedHalfPyramid(6, 0);
-        // numbericHalfPyramid(5, 0);
-        // numberiInvertedHalfPyramid(5, 0);
-        // solidStarPyramid(15, 0);
-        // solidStarPyramidReverse(6, 0);
-        // solidDiamond(10, 0);
-        // hollowDiamond(5, 0);
-        // flippedSolidDiamond(6);
-        // fancyPattern(4);
-        // alphabetPalindromePyramid(5);
-        // numericFullPyramid(5);
-        numericHollowPyramid(5);
-
-        return 0;
+void numericHollowHalfPyramid2(int n)
+{
+    // row
+    for (int row = 0; row < n; row++)
+    {
+        // col
+        for (int col = 0; col < row + 1; col++)
+        {
+            // print
+            if (col == 0 || col == row || row == n - 1)
+            {
+                cout << col + 1;
+            }
+            else
+            {
+                cout << " ";
+            }
+        }
+        // new line
+        cout << endl;
     }
+}
+
+void numerichollwInvertedPyramid(int n)
+{
+
+    for (int row = 0; row < n; row++)
+    {
+        for (int col = row + 1; col <= n; col++)
+        {
+
+            if (col == row + 1 || col == n || row == 0)
+            {
+                cout << col;
+            }
+            else
+            {
+                cout << " ";
+            }
+
+            // cout << col + 1;
+        }
+        cout << endl;
+    }
+}
+
+void numericPalindromeEquilateralPyramid(int n)
+{
+
+    // row
+    for (int row = 0; row < n; row++)
+    {
+        // spaces
+        for (int spaces = 0; spaces < n - row; spaces++)
+        {
+            cout << "  ";
+        }
+
+        // first part
+
+        int start = 0;
+
+        for (int col = 0; col <= row; col++)
+        {
+            cout << start + 1 << " ";
+            start = start + 1;
+        }
+
+        // second part
+
+        for (int col = 0; col < row; col++)
+        {
+            start = start - 1;
+            cout << start << " ";
+        }
+
+        cout << endl;
+    }
+}
+
+void solidHalfDiamond(int n)
+{
+    for (int rows = 0; rows < (2 * n) - 1; rows++)
+    {
+        if (rows < n)
+        {
+            for (int cols = 0; cols < rows + 1; cols++)
+            {
+                cout << "* ";
+            }
+
+            cout << endl;
+        }
+
+        else if (rows > n || rows == n)
+        {
+            for (int cols = 0; cols < (2 * n) - rows - 1; cols++)
+            {
+                cout << "* ";
+            }
+            cout << endl;
+        }
+    }
+}
+
+void fancyPattern1(int n)
+{
+    if (n > 9)
+    {
+        cout << "Please enter value less than 9 " << endl;
+    }
+
+    // row
+    for (int row = 0; row < n; row++)
+    {
+        int start_num_index = 8 - row;
+        int num = row + 1;
+        int count_num = num;
+
+        for (int cols = 0; cols < 17; cols++)
+        {
+            if (cols == start_num_index && count_num > 0)
+            {
+                cout << num;
+
+                start_num_index += 2;
+                count_num--;
+            }
+
+            else
+            {
+                cout << "*";
+            }
+        }
+
+        cout << endl;
+    }
+}
+
+void fancyPattern2(int n)
+{
+    int c = 1;
+    for (int rows = 0; rows < n; rows++)
+    {
+        for (int cols = 0; cols <= rows; cols++)
+        {
+            cout << c;
+            c++;
+            if (cols < rows)
+            {
+               cout << "*";
+            }
+
+        }
+        cout << endl;
+    }
+
+    int start = c - n;  
+    
+    for (int rows2 = 0; rows2 < n; rows2++)
+    {
+        int k = start;
+        for (int cols2 = 0; cols2 <= n - rows2 - 1; cols2++)
+        {
+           cout << k;
+           k++;
+           if (cols2 < n - rows2 - 1)
+           {
+            cout << "*";
+           }
+           
+        }
+        start = start - (n - rows2 - 1);
+        cout << endl;
+    }
+    
+}
+
+int main()
+{
+    int n;
+
+    // int numberOfRow = 4;
+    // int numberOfCol = 4;
+
+    // solidRectangle(3, 4);
+    // squarePattern(4, 4);
+    // hollowRectagle(7, 9);
+    // halfPyramid(6, 0);
+    // invertedHalfPyramid(6, 0);
+    // numbericHalfPyramid(5, 0);
+    // numberiInvertedHalfPyramid(5, 0);
+    // solidStarPyramid(15, 0);
+    // solidStarPyramidReverse(6, 0);
+    // solidDiamond(10, 0);
+    // hollowDiamond(5, 0);
+    // flippedSolidDiamond(6);
+    // fancyPattern(4);
+    // alphabetPalindromePyramid(5);
+    // numericFullPyramid(5);
+    // numericHollowPyramid(5);
+    // numericHollowHalfPyramid2(5);
+    // numerichollwInvertedPyramid(5);
+    // numericPalindromeEquilateralPyramid(9);
+    // solidHalfDiamond(5);
+    // fancyPattern1(7);
+    // fancyPattern2(4);
+
+
+
+
+    
+    return 0;
+}
