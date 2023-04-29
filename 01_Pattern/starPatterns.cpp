@@ -569,32 +569,147 @@ void fancyPattern2(int n)
             c++;
             if (cols < rows)
             {
-               cout << "*";
+                cout << "*";
             }
-
         }
         cout << endl;
     }
 
-    int start = c - n;  
-    
+    int start = c - n;
+
     for (int rows2 = 0; rows2 < n; rows2++)
     {
         int k = start;
         for (int cols2 = 0; cols2 <= n - rows2 - 1; cols2++)
         {
-           cout << k;
-           k++;
-           if (cols2 < n - rows2 - 1)
-           {
-            cout << "*";
-           }
-           
+            cout << k;
+            k++;
+            if (cols2 < n - rows2 - 1)
+            {
+                cout << "*";
+            }
         }
         start = start - (n - rows2 - 1);
         cout << endl;
     }
-    
+}
+
+void fancyPattern3(int n)
+{
+
+    for (int row = 0; row < n; row++)
+    {
+
+        int cond;
+
+        if (row <= n / 2)
+        {
+            cond = 2 * row;
+        }
+
+        else
+        {
+            cond = 2 * (n - row - 1);
+        }
+
+        for (int col = 0; col < cond + 1; col++)
+        {
+            if (col == 0)
+            {
+                cout << "*";
+            }
+
+            if (col <= cond / 2)
+            {
+                cout << col + 1;
+            }
+            else
+            {
+                cout << cond - col + 1;
+            }
+        }
+        if (row != 0)
+        {
+            /* code */
+            cout << "*";
+        }
+
+        cout << endl;
+    }
+}
+
+void floydsTriangle(int n)
+{
+    int storeCount = 0;
+
+    for (int row = 0; row < n; row++)
+    {
+
+        for (int col = 0; col < row + 1; col++)
+        {
+            cout << storeCount + 1 << " ";
+            storeCount += 1;
+        }
+
+        cout << endl;
+    }
+}
+
+void pascalTriangle(int n)
+{
+    // the formula to calculate pascal triangle is binomial coefficient
+    // c  = c (i - j) / j;  where i and j are row and columns respectively.
+    for (int row = 1; row <= n; row++)
+    {
+        for (int i = 0; i < n - row; i++)
+        {
+            cout << " ";
+        }
+
+        int c = 1;
+
+        for (int col = 1; col <= row; col++)
+        {
+            cout << c << " ";
+            c = c * (row - col) / col;
+        }
+
+        cout << endl;
+    }
+}
+
+void butterflyPattern(int n)
+{
+    for (int row = 0; row < 2 * n; row++)
+    {
+        for (int col = 0; col < 2 * n; col++)
+        {
+            if (row < (2 * n) / 2)
+            {
+                if (col <= row || col >= (2 * n) - row - 1)
+                {
+                    cout << "*" << " ";
+                }
+                else
+                {
+                    cout << "  ";
+                }
+            }
+
+            else {
+                if (col < (2 * n) - row || col >= row)
+                {
+                    cout << "*" << " ";
+
+                }
+                else {
+                    cout << "  ";
+                }
+                
+            }
+        }
+        cout << endl;
+    }
 }
 
 int main()
@@ -626,10 +741,10 @@ int main()
     // solidHalfDiamond(5);
     // fancyPattern1(7);
     // fancyPattern2(4);
+    // fancyPattern3(7);
+    // floydsTriangle(7);
+    // pascalTriangle(5);
+    butterflyPattern(5);
 
-
-
-
-    
     return 0;
 }
