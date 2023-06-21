@@ -66,6 +66,7 @@ vector<int> intersectionArray(vector<int> ans, vector<int> arrFirst, vector<int>
     for (int i = 0; i < arrFirst.size(); i++)
     {
         int element = arrFirst[i];
+        
         for (int j = 0; j < arrSecond.size(); j++)
         {
             if (element == arrSecond[j])
@@ -230,6 +231,7 @@ int main()
     // SORT ZEROES AND ONCE 
 
     vector<int> arr {0, 1, 1, 0, 1, 0, 1, 0, 1};
+    // vector<int> arr {2, 0, 2, 1, 1, 0};
     sortZeroAndOne(arr);
     
     

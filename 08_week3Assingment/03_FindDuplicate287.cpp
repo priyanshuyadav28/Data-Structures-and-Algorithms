@@ -4,15 +4,37 @@
 
 using namespace std;
 
+//first solution (naive method)
+
+int duplicateElement(vector<int> nums) {
+
+    sort(nums.begin(), nums.end());
+
+    for (int i = 0; i < nums.size() - 1; i++)
+    {
+       if (nums[i] == nums[i + 1])
+       {
+        return nums[i];
+       }
+       
+    }
+
+    return - 1;
+
+}
+
+
 // second solution 
-int duplicate(vector<int> nums) // this is a good solution but it modifies the array 
+// this is a good solution but it modifies the array 
+int duplicate(vector<int> nums) 
 {
     int ans = -1;
 
     for (int i = 0; i < nums.size(); i++)
     {
         int index = abs(nums[i]);
-
+        
+        // already visited
         if (nums[index] < 0)
         {
             ans = index;
@@ -27,6 +49,8 @@ int duplicate(vector<int> nums) // this is a good solution but it modifies the a
 }
 
 // third solution : without modifing the array 
+
+//positioning method 
 int findDuplicate2(vector<int> nums)  {
 
     while (nums[0] != nums[nums[0]])

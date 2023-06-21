@@ -1,19 +1,36 @@
-#include<iostream>
+#include <iostream>
+#include<vector>
+
 using namespace std;
 
-int main() {
+bool linearSearch(int arr[][3], int key)
+{
+    for (int row = 0; row < 3; row++)
+    {
+        for (int col = 0; col < 3; col++)
+        {
+            if (arr[row][col] == key)
+            {
+                return true;
+            } 
+        }
+    }
+    return false;
+}
 
-    // int arr[3][3]; // declaration 
+int main()
+{
+
+    // declaration
+    // int arr[3][3];
 
     // INITIALIZATION
-
     int arr[3][3] = {
-        {1, 6, 8}, 
-        {3, 9, 2}, 
-        {5, 7, 4}
-    };
+        {1, 6, 8},
+        {3, 9, 2},
+        {5, 7, 4}};
 
-    // PRINTING THE ARRAY ROW, COL WISE 
+    // PRINTING THE ARRAY ROW, COL WISE
     // for (int row = 0; row < 3; row++)
     // {
     //     for (int col = 0; col < 3; col++)
@@ -25,7 +42,7 @@ int main() {
     // }
 
     // cout << endl;
-    
+
     // PRINTING THE ARRAY IN COL , ROW DIRECTION
     // for (int row = 0; row < 3; row++)
     // {
@@ -34,11 +51,10 @@ int main() {
     //         cout << arr[col][row] << " ";
     //     }
 
-    //     cout << endl;        
+    //     cout << endl;
     // }
 
-    // PRINTING SUM OF ROWS OF THE ARRAY 
-
+    // PRINTING SUM OF ROWS OF THE ARRAY
 
     // for (int row = 0; row < 3; row++)
     // {
@@ -55,8 +71,11 @@ int main() {
 
     // cout << endl;
 
+    // linear Search on 2D array
 
-
+    int key = 6;
+    cout << linearSearch(arr, key);
+    
 
     return 0;
 }
