@@ -135,6 +135,31 @@ int smallestMissing(vector<int> brr) {
     
 }
 
+
+int peakInMountain(vector<int> arr) {
+
+    int start = 0;
+    int end = arr.size() - 1;
+
+    while (start < end)
+    {
+        int mid = start + (end - start) / 2;
+
+        if (arr[mid] < arr[mid + 1]) 
+        {
+            // right search
+            start = mid + 1;
+        }
+        else {
+            end = mid;
+        }
+        
+    }
+
+    return start;
+    
+}
+
 int main() {
     
     // vector<int> nums = {1, 3, 7, 9, 11, 12, 13, 15, 18, 19};
@@ -162,10 +187,16 @@ int main() {
     // cout << totalOccourence;
 
     // question 5 - smallest missing number 
-    vector<int> brr = {1, 2, 3, 4, 5, 6, 7, 8};
-    int ans = smallestMissing(brr);
-    cout << ans;
+    // vector<int> brr = {1, 2, 3, 4, 5, 6, 7, 8};
+    // int ans = smallestMissing(brr);
+    // cout << ans;
 
+    // question 6 -> Peak element in a mountain array
+    vector<int> nums = {0, 2, 5, 6, 7, 9, 11, 10, 8, 5, 3, 1};
+    // vector<int> nums = {3, 5, 3, 2, 0};
+    int ans = peakInMountain(nums);
+    cout << ans;
+    // cout << "HI";
 
 
 
