@@ -31,7 +31,7 @@ int main() {
     //     {7, 4, 6}
     // };
 
-    vector <vector<int> > arr;
+    vector <vector<int> > arr; // declaration of a vector
 
     vector<int> a{1, 2, 3};
     vector<int> b{4, 5, 6, 9, 3};

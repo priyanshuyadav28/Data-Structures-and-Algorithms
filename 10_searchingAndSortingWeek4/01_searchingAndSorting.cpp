@@ -87,7 +87,7 @@ int lastOccourenceOfElement(vector<int> arr, int target) {
         {    
             ans = mid; // storing answer
             start = mid + 1;   // reducing array
-        }
+        }   
 
         if (target < arr[mid])
         {
