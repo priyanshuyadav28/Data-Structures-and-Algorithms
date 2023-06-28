@@ -3,7 +3,7 @@
 
 using namespace std;
 
-// question 1 -> find in nearly sorted array 
+// question 1 -> find in nearly sorted array. 
 int findInNearlySortedArray(vector<int> arr, int target) {
     int start = 0;
     int end = arr.size() - 1;
