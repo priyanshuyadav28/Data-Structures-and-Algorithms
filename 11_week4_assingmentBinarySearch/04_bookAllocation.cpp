@@ -19,7 +19,6 @@ bool isPossibleSolution(vector<int> nums, int n, int m, int sol) {
         if (pageSum + nums[i] > sol )
         {
             counter++;
-            // pageSum = 0;
             pageSum = nums[i];
 
             if (counter > m)
@@ -28,8 +27,9 @@ bool isPossibleSolution(vector<int> nums, int n, int m, int sol) {
             }
             
         } else {
-            pageSum += nums[i];
-        } 
+            pageSum = nums[i];
+        }
+        
     }
     return true;
     
