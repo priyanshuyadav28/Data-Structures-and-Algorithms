@@ -74,6 +74,16 @@ bool isPalindrome(char ch[]) {
     return true;
 }
 
+void toUpperCase(char lowerCase[]) {
+
+    int n = getStrLength(lowerCase);
+
+    for (int i = 0; i < n; i++)
+    {
+        lowerCase[i] = lowerCase[i] - 'a' + 'A';
+    }
+
+}
 
 
 
@@ -116,12 +126,25 @@ int main() {
     // cout << sentence;
 
     // question 4 ->  palindrome
-    char ch[100];
+    // char ch[100];
     
-    cout << "Enter the text to check for Palindrome" << endl;
-    cin >> ch;
+    // cout << "Enter the text to check for Palindrome" << endl;
+    // cin >> ch;
     
-    cout << isPalindrome(ch) << endl;
+    // cout << isPalindrome(ch) << endl;
+
+
+    // question 5 -> convert into upperCase
+    // char lowerCase[100];
+
+    // cout << "Enter the string" << endl;
+    // cin>> lowerCase;
+
+    
+
+
+
+
     
     
     
