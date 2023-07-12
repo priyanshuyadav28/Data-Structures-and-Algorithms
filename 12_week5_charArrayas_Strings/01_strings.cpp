@@ -63,6 +63,7 @@ int main() {
 
     str.erase(0, 4);
     cout << str;
+    
 
 
     
