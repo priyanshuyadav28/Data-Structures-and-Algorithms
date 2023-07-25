@@ -7,6 +7,54 @@
 
 using namespace std;
 
+void changeSign(int* p)  {
+    *p = (*p) * -1;
+}
+
+void fun(int a[]) {
+    // a[0] = 13;
+    cout << a[0] << " ";
+}
+
+void square(int *p) {
+    int a = 10;
+    p = &a;
+    *p = (*p) * (*p);
+}
+
+void q(int z) {
+    z+= z;
+    cout << z << " ";
+}
+
+void p(int* y) {
+    int x = *y + 2;
+    q(x);
+    *y = x - 1;
+    cout << x << " ";
+}
+
+int f(int x, int* py, int** ppz) {
+    int y, z;
+
+    **ppz += 1;
+    z = **ppz;
+    *py += 2;
+
+    y = *py;
+    x += 3;
+
+    return x + y + z;
+
+}
+
+void increment(int** p) {
+    (**p)++;
+}
+
+
+
+
 int main() {
 
     // question 1 
@@ -124,6 +172,170 @@ int main() {
     // cout << b << endl; // this would also print complete string xyz 
 
     // cout << *c << endl; // this will print only x as *c will be holding the value at address of b[0];  
+
+
+
+    // question 13 -> 
+
+    // char s[] = "hello";
+    // char* p = s;
+
+    // cout << s[0] << " " << p[0] << endl;
+
+
+    // question 14 ->
+
+    // char arr[20];
+    // int i;
+
+    // for(i = 0; i < 10; i++) {
+    //     *(arr + i) = 65 + i;
+    // }
+
+    // *(arr + i) = '\0';
+    // cout << arr;
+
+
+    // question 15 -> 
+    
+    // char* ptr; // void pointer
+    // char Str[] = "abcdefg";
+    // ptr = Str;
+
+    // ptr += 5;
+
+    // cout << ptr;
+
+
+    // question 16 -> 
+    // int numbers[5];
+
+    // int* p;
+
+    // p = numbers;
+    // *p = 10;
+
+    // p = &numbers[2];
+    // *p = 20;
+
+    // p--;
+
+    // *p = 30;
+    // p = numbers + 3;
+
+    // *p = 40;
+
+    // p = numbers;
+
+    // *(p + 4) = 50;
+
+    // for (int n = 0; n < 5; n++) {
+    //     cout << numbers[n] << ", ";
+    // }
+
+
+
+    // question 17 ->
+
+    // char st[] = "ABCD";
+    // for (int i = 0; st[i] != '\0'; i++)
+    // {
+    //     cout << st[i] << *(st) + i << *(i + st) << i[st] << endl;
+    // }
+    
+
+    // NOTE :- 
+    // char + 0 will be typecasted in int and total value will be ascii(char) + the number 
+    // and st in char array is always equal to address of first element or the base address so *(i + st) = base address element + the value of i. 
+
+
+    // question 18 
+
+    // float arr[5] = {12.5, 10.0, 13.5, 90.5, 0.5};
+
+    // float* ptr1 = &arr[0];
+    // float* ptr2 = ptr1 + 3;
+
+    // cout << *ptr2 << endl;
+    // cout << ptr2 - ptr1 << endl;
+
+    // QUESTION 19
+
+    // int a = 10;
+    // changeSign(&a); // pass by reference  
+    // cout << a << endl;
+
+    // QUESTION 20 :-
+    // int a[] = {1, 2, 3, 4};
+
+    // fun(a + 1); // (a + 1) == &a[1];
+    // cout << a[0] << endl;
+
+
+    //NOTE :- ARRAY IS ALWAYS PASSED BY REFERENCE which means any change made by the function in which the array is passed it will reflect in the original array 
+
+    // NOTE:- VECTOR IS NOT PASSED BY REFERENCE IT IS PASS BY VALUE WHICH MEANS THE COPY OF THE VECTOR ARRAY IS PASSES INSIDE THE FUNCTION AND ANY CHANGE MAY VIA THE FUNCTION WILL NOT REFLECT IN THE ORIGINAL VECTOR ARRAY 
+
+
+    // QUESTION 21
+
+    // int a = 10;
+    // square(&a);
+    // cout << a << endl;
+
+
+    // QUESTION 22 
+
+    // int x = 5;
+    // p(&x);
+    // cout << x;
+
+
+    // QUESTION 23 
+    // int a = 10;
+    // int* p = &a;
+    // int** q = &p;
+
+    // int b = 20;
+    // *q = &b;
+
+    // (*p)++;
+
+    // cout << a << " " << b << endl; // important concept of double pointer  and *q is the keypoint 
+
+    // question 24 
+    // int c, *b, **a;
+    // c = 4;
+    // b = &c;
+    // a = &b;
+
+    // cout << f(c, b, a) << endl;
+
+
+
+    // question 25 
+    // int***r, **q, *p, i = 8;
+
+    // p = &i;
+    // (*p)++;
+    // q = &p;
+    // (**q)++;
+    // r = &q;
+
+    // cout << *p << " " << **q << " " << " " << ***r << endl;
+
+
+    // question 26 
+    int num = 10;
+    int *ptr = &num;
+    increment(&ptr);
+
+    cout << num << endl;
+
+
+
+
+
 
 
      
