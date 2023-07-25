@@ -29,7 +29,7 @@ int fastExponentiation(int a, int b) {
         {   
             ans = ans * a;
         }
-        a = a * a; 
+        a =  a * a;
         b >> 1;  // b = b / 2;
         
     }
