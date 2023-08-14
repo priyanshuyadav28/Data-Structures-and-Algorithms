@@ -7,7 +7,7 @@
 
 using namespace std;
 
-void printAllSubArray(vector<int> &arr, int &start, int end)
+void printAllSubArray_util(vector<int> &arr, int &start, int end)
 {
     if (end >= arr.size())
     {
@@ -16,12 +16,23 @@ void printAllSubArray(vector<int> &arr, int &start, int end)
 
     for (int i = start; i < end; i++)
     {
-        cout << arr[i];
+        cout << arr[i] << " ";
     }
-    cout << endl; 
+    // cout << endl; 
 
-    printAllSubArray(arr, start, end + 1);
+    printAllSubArray_util(arr, start, end + 1);
 }
+
+void printAllSubArray(vector<int>& arr) {
+    for (int start = 0; start < arr.size(); start++)
+    {
+        int end = start;
+        printAllSubArray_util(arr, start, end);
+    }
+    
+}
+
+
 
 int main()
 {
@@ -31,7 +42,7 @@ int main()
     int start = 0;
     int end = 0;
 
-    printAllSubArray(arr, start, end);
+    printAllSubArray(arr);
 
     return 0;
 }
