@@ -9,27 +9,23 @@ using namespace std;
 
 int binarySearch(int arr[], int& key, int& start, int& end) {
     if (start > end)
-    {
         return -1;
-    }
+    
     
     int mid = start + (end - start) / 2;
 
     if (arr[mid] == key)
-    {
         return mid;
-    }
 
     if (arr[mid] > key)
-    {   end = mid - 1;
+    {   
+        end = mid - 1;
         return binarySearch(arr, key, start, end);
-    } else {
+    } 
+    else {
         start = mid + 1;
         return binarySearch(arr, key, start, end);
     }
-    
-    
-
 
 }
 
