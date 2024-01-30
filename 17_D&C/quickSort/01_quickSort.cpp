@@ -22,7 +22,7 @@ int partition(int arr[], int s, int e) {
         }
     }
     // jab mai loop se bahar aaya to mere pass pivot ki correct index ki position ready hai 
-    int rightIndex = s + count;
+    int rightIndex = s + count; // correct index where pivot element should be
     swap(arr[pivotIndex], arr[rightIndex]);
     // now the pivot element is at correct position
     // update pivotIndex 
@@ -46,10 +46,12 @@ int partition(int arr[], int s, int e) {
 
         // 2 case are possible now 
         // case 1-> you found an elements to swap: mtlb ki galat element mile jaise left me kuch aise elements hai jo pivot se bade hai ya right me kuch aise elements hai jo pivot se chote hai
-
         // case 2-> no need to swap
+
+        // elements larger than pivot in left side or smaller at right side will be swapped 
         if (i < pivotIndex && j > pivotIndex)
             swap(arr[i], arr[j]);
+        
     }
 
     return pivotIndex;
@@ -77,8 +79,10 @@ void quickSort(int arr[], int s, int e) {
 
 int main() {
 
-    int arr[] = {8, 1, 3, 4, 30, 50, 40};
-    int n = 7;
+    // int arr[] = {8, 1, 3, 4, 30, 50, 40};
+    // int arr[] = {8, 8, 1, 3, 6, 10, 150, 40,};
+    int arr[] = {9, 2, 1, 3, 5, 12};
+    int n = 6;
 
     int s = 0;
     int e = n - 1;

@@ -25,7 +25,7 @@ int main() {
     // int -> data type
     // * -> part of syntax or dereference operator 
     // &a -> address of a 
-    // int* -> is a pointer to integer data OR ptr is a pointer which contain int data
+    // int* -> is a pointer to integer data OR ptr is a pointer which contain integer data
 
     // access the value ptr is pointing to 
     // ptr is pointing to address of a so cout << ptr; will give the address of a 
@@ -35,7 +35,7 @@ int main() {
     //cout << *ptr << endl; // this will print 5 or the value stored in ptr
     // here *ptr means value at location stored in ptr
 
-    // pointer is c++ is a variable which stores address of other variables 
+    // pointer in c++ is a variable which stores address of other variables 
 
     // another example 
     // char ch = 'p';
