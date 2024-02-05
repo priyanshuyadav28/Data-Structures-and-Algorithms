@@ -81,26 +81,26 @@ void mergeSort(int arr[], int s, int e) {
     mergeSort(arr, s, mid);
 
     // right part sort kardo recursion 
-    mergeSort(arr, mid + 1 , e);
+    mergeSort(arr, mid + 1, e);
 
     // now merge the two sorted arrays 
     mergeArray(arr, s, e);
-   
 } 
 
 int main() {
 
     int arr[] = {4, 5, 13, 2, 17};
     int n = 5;
+    
 
-    int s = 0;
-    int e = n - 1;
-    mergeSort(arr, s , e);
+    // int s = 0;
+    // int e = n - 1;
+    // mergeSort(arr, s , e);
 
-    for (int i = 0; i < n; i++)
-    {
-        cout << arr[i] << " ";
-    }
+    // for (int i = 0; i < n; i++)
+    // {
+    //     cout << arr[i] << " ";
+    // }
     
 
     return 0; 
