@@ -94,10 +94,16 @@ void solveQueen(vector<vector<char>> &board, int col, int n)
 int main()
 {
 
-    int n = 5;
+    int n = 4;
     vector<vector<char>> board(n, vector<char>(n, '-'));
 
     int col = 0;
+
+    if (n <= 3)
+    {
+        cout << "No Case Possible " << endl;
+        return 0;
+    }
 
     solveQueen(board, col, n);
 
