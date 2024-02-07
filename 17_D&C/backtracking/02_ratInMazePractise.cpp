@@ -87,6 +87,13 @@ int main() {
         {1, 1, 1}
     };
 
+    if (maze[0][0] == 0)
+    {
+        cout << "Not solution exist " << endl; 
+        return 0; 
+    }
+    
+
     // defining the total row and col maze has 
     int rows = 3;
     int cols = 3;
