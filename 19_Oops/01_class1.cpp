@@ -82,6 +82,10 @@ class Students {
         cout << "cgpa is " << this->cgpa << endl;
     }
 
+    ~Students() {
+        cout << "Inside students destructor" << endl; 
+    }
+
 }; 
 
 int main()
@@ -130,8 +134,17 @@ int main()
     Students* priyanshu = new Students("21BCS6104", "Priyanshu Yadav", 7.35, 7.83);
 
     priyanshu->getStudentData();  
-    
-    Students lalu = *priyanshu;
+
+    Students* st1 = new Students("33", "St1", 9.23, 8.9);
+    st1->getStudentData();  
+
+    // for statically created object destructure will be called automatically but for dynamically created object it has to be called manually. 
+    // st1->~Students(); 
+    delete st1; 
+
+
+
+    // Students lalu = *priyanshu;
 
     return 0;
 }
