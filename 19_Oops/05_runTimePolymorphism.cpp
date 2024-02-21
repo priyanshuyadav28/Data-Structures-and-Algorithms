@@ -65,7 +65,7 @@ int main() {
 
     // cases 
 
-    // case 1
+    // case 2 CONSTRUCTOR CASE 
     // Animal* a1 = new Animal(); 
     // a1->speak();
 
