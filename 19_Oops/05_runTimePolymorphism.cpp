@@ -51,6 +51,7 @@ int main() {
 
     // Run Time Polymorphism
 
+    // CASE 1: METHOD only 
     // Animal a; 
     // a.speak(); 
 
@@ -88,7 +89,7 @@ int main() {
 
     //Animal* obj1 = new Animal(); // animal constructor will be called
 
-    Animal* obj2 = new Dog(); // both animal and dog constructor will be called 
+    Animal* obj2 = new Dog(); // both animal and dog constructor will be called since dog will be depending upon Animal due to the inheritance 
 
 
 
