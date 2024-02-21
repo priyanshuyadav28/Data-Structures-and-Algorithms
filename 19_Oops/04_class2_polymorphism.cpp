@@ -55,7 +55,7 @@ int main() {
                 // 1.2 operator overloading 
 
         // 2. run time polymorphism
-
+            // acheived via function overriding
 
     // method overloading 
     // Maths obj; 
