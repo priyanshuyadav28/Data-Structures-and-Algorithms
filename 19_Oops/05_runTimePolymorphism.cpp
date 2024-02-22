@@ -76,7 +76,7 @@ int main() {
     // case 3
 
     // this is known as upCasting
-    // until the speak methon in Animal(parent class) will not be marked as virtual till then only the parent class method spek will be called. 
+    // until the speak method in Animal(parent class) will not be marked as virtual till then only the parent class method speak will be called. 
     // but as soon as we put the virtual keyword there in the parent class at run time the child class's speak will be called
     // Animal* a = new Dog(); 
     // a->speak(); 
