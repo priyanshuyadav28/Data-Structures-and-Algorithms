@@ -22,7 +22,7 @@ public:
 
     ~Node()
     {
-        cout << "Dtor called: " << data << endl; // Print data for debugging
+        cout << "Dtor called: " << data << endl;
     }
 };
 
@@ -142,6 +142,69 @@ void deallocation(Node *&first)
     }
 }
 
+
+void deleteNode(int position, Node* &head, Node *&tail) {
+    if (head == NULL) {
+        cout << "Cannot delete empty list" << endl; 
+        return; 
+    }
+
+    int checkLen = findLen(head); 
+
+    if (position > checkLen)
+    {
+        cout << checkLen << endl; 
+        cout << "Out of bound" << endl; 
+    }
+    
+    
+
+    if (position == 1) {
+        Node *temp = head; 
+        head = head->next;
+        temp->next = NULL;  
+        delete (temp); 
+        return; 
+    }
+
+    int len = findLen(head);
+
+    if (position == len) {
+         
+        // find prev
+        int i = 1; 
+        Node *prev = head;  
+        while (i < position - 1)
+        {
+            prev = prev->next; 
+            i++; 
+        }
+
+        prev->next = NULL;
+        Node *temp = tail;
+        tail = prev; 
+        delete temp; 
+
+        return; 
+    }
+
+    int i = 1; 
+    Node *prev = head; 
+    while (i < position - 1)
+    {
+        prev = prev->next; 
+        i++; 
+    }
+
+    Node* curr = prev->next;    
+    prev->next = curr->next; 
+    curr->next = NULL; 
+    delete curr; 
+  
+}
+
+
+
 int main()
 {
     // Node *first = new Node(10);
@@ -174,9 +237,16 @@ int main()
     printNode(head);
     cout << endl; 
 
-    insertAtPosition(6, head, tail, 201); 
-    printNode(head); 
+    // insertAtPosition(6, head, tail, 201); 
+    // printNode(head); 
 
+    // deleteNode(5, head, tail); 
+    // printNode(head); 
+    // cout << endl; 
+
+    deleteNode(7, head, tail); 
+    printNode(head); 
+    cout << endl; 
 
     // deallocation(head);
 
