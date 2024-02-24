@@ -61,6 +61,62 @@ void insertAtTail(Node *&tail, Node *&head, int data)
     tail = newNode;
 }
 
+int findLen(Node *&head)
+{
+    int len = 0;
+    Node *temp = head;
+    while (temp != NULL)
+    {
+        temp = temp->next;
+        len++;
+    }
+
+    return len;
+}
+
+void insertAtPosition(int position, Node* &head, Node* &tail, int data) {
+    
+    if (head == NULL) {
+        Node *newNode = new Node(data); 
+        head = newNode; 
+        tail = newNode; 
+    }
+
+    if (position == 0)
+    {
+        insertAtHead(head, tail, data);
+        return;  
+    }
+
+    
+    int len = findLen(head); 
+
+    if (position >= len) {
+        insertAtTail(tail, head, data); 
+        return; 
+    }
+    
+
+    // step 1-> find the prev location
+    Node *prev = head; 
+    int i = 1; 
+    while (i < position)
+    {
+        prev = prev->next; 
+        i++; 
+    }
+
+    Node* curr = prev->next; 
+
+    Node *newNode = new Node(data); 
+    newNode->next = curr; 
+    prev->next = newNode;        
+    
+
+}
+
+
+
 void printNode(Node *&head)
 {
     Node *temp = head;
@@ -107,18 +163,20 @@ int main()
     Node *head = NULL;
     Node *tail = NULL;
 
+    insertAtHead(head, tail, 10);
     insertAtHead(head, tail, 20);
     insertAtHead(head, tail, 30);
-    insertAtHead(head, tail, 40);
-    insertAtHead(head, tail, 50);
 
+    insertAtTail(tail,head, 50);
     insertAtTail(tail,head, 60);
-    insertAtTail(tail,head, 70);
-    insertAtTail(tail,head, 80);
-    insertAtTail(tail,head, 90);
 
     cout << "Printing Linked List: " << endl;
     printNode(head);
+    cout << endl; 
+
+    insertAtPosition(6, head, tail, 201); 
+    printNode(head); 
+
 
     // deallocation(head);
 
