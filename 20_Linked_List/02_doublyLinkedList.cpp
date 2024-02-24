@@ -126,7 +126,7 @@ void insertAtPosition(int position, Node *&head, Node *&tail, int data)
 
     // inserting at position end(tail)
     int len = getLength(head);
-    if (position >= len)
+    if (position > len)
     {
         insertAtTail(head, tail, data);
         return;
@@ -146,12 +146,82 @@ void insertAtPosition(int position, Node *&head, Node *&tail, int data)
     Node *curr = prev->next;
 
     Node *newNode = new Node(data);
-    newNode->next = curr;
-    curr->prev = newNode;
-
     prev->next = newNode;
     newNode->prev = prev;
+
+    curr->prev = newNode;
+    newNode->next = curr;
 }
+
+void deleteNode(int position, Node* &head, Node* &tail) {
+    if (head == NULL) {
+        cout << "The list is already empty " << endl; 
+        return; 
+    }
+
+    int currLen = getLength(head); 
+    if (position > currLen)
+    {
+        cout << "Index out of bound" << endl; 
+        return; 
+    }
+    
+
+    // CASE 0: when only one list is present 
+    if (head->next == NULL) {
+        Node *temp = head; 
+        head = NULL; 
+        tail = NULL; 
+        delete temp; 
+    }
+
+
+    // CASE 1: delete the first index or head
+    if (position == 0)
+    {
+        Node *temp = head; 
+        head = head->next; 
+        // head->prev = NULL; 
+        temp->next = NULL; 
+        delete temp; 
+        return; 
+    }
+
+    // CASE 2: delete the tail or the last index
+    int len = getLength(head); 
+
+    if (position == len)
+    {
+        // delete last node 
+        Node *temp = tail; 
+        tail = tail->prev; 
+        temp-> prev = NULL; 
+        tail->next = NULL; 
+        delete temp; 
+        return; 
+    }
+
+    // CASE 3: delete from between of the list
+    int i = 0; 
+    Node *left = head; 
+    while (i < position - 1)
+    {
+        left = left->next; 
+        i++; 
+    }
+
+    Node *curr = left->next; 
+    Node *right = curr->next; 
+
+    curr->next = NULL; 
+    left->next = right; 
+    curr->prev = NULL; 
+    right->prev = left; 
+
+    return; 
+}
+
+
 
 int main()
 {
@@ -162,19 +232,27 @@ int main()
     insertAtHead(head, tail, 102);
     insertAtHead(head, tail, 103);
 
-    printNode(head);
+    // printNode(head);
 
     insertAtTail(head, tail, 10);
     insertAtTail(head, tail, 20);
     insertAtTail(head, tail, 30);
 
-    printNode(head);
+    // printNode(head);
 
     insertAtPosition(0, head, tail, 2);
-    // insertAtPosition(7, head, tail, 12);
-    insertAtPosition(8, head, tail, 22);
+    printNode(head); 
+
+    // insertAtPosition(8, head, tail, 22);
     insertAtPosition(3, head, tail, 5);
+
     printNode(head);
+    cout << getLength(head) << endl; 
+
+    deleteNode(12, head, tail); 
+    printNode(head); 
+
+
 
     return 0;
 }
