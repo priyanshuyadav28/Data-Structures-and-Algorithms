@@ -243,11 +243,12 @@ int main() {
     insertAtPosition(head, tail, 3, 30);
     insertAtPosition(head, tail, 4, 40);
     insertAtPosition(head, tail, 4, 50);
+    insertAtPosition(head, tail, 4, 60);
 
     printNode(head); 
     
-    // Node *middlePos = getMiddle(head); 
-    // cout << "Middle Pos is: " << middlePos->data << endl; 
+    Node *middlePos = getMiddle(head); 
+    cout << "Middle Pos is: " << middlePos->data << endl; 
 
     return 0; 
 }

@@ -204,6 +204,9 @@ Node *reverseKNodes(Node* &head, int k) {
     // when k > total length of node
     int totalLength = findLength(head); 
 
+    // very very important case: 
+        // it will prevent sorting the list when it will have elements less than k at last 
+
     if (k > totalLength)
     {
         return head; 
@@ -255,11 +258,11 @@ int main()
     insertAtPosition(head, tail, 3, 30);
     insertAtPosition(head, tail, 4, 40);
     insertAtPosition(head, tail, 4, 50);
-    insertAtPosition(head, tail, 4, 60);
+    // insertAtPosition(head, tail, 4, 60);
 
     printNode(head);
 
-    head = reverseKNodes(head, 2); 
+    head = reverseKNodes(head, 3); 
 
     printNode(head); 
 
