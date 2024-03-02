@@ -44,6 +44,7 @@
         "typeinfo": "cpp",
         "regex": "cpp",
         "map": "cpp",
-        "set": "cpp"
+        "set": "cpp",
+        "stack": "cpp"
     }
 }
