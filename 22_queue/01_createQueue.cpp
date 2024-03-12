@@ -21,6 +21,10 @@ class Queue {
         rear = 0; 
     }
 
+    ~Queue() {
+        delete[] arr; 
+    }
+
     void push(int val) {
         if (rear == size) {
             cout << "Queue is full" << endl; 
