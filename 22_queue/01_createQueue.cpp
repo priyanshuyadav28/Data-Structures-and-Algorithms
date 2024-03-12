@@ -15,6 +15,7 @@ class Queue {
     int *arr; 
 
     Queue(int size) {
+        this->size = size; 
         arr = new int[size]; 
         front = 0; 
         rear = 0; 
