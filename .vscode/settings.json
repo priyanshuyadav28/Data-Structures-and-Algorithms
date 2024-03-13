@@ -45,6 +45,7 @@
         "regex": "cpp",
         "map": "cpp",
         "set": "cpp",
-        "stack": "cpp"
+        "stack": "cpp",
+        "queue": "cpp"
     }
 }
