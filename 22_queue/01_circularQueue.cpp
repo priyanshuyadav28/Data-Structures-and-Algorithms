@@ -86,7 +86,11 @@ class CQueue {
 
 int main() {
 
-    
+    CQueue q(5); 
+
+    q.push(2); 
+    q.push(4); 
+    q.push(8); 
 
 
     return 0; 
