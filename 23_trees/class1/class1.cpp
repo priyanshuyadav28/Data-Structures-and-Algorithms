@@ -136,6 +136,22 @@ int maxDepth(Node *root)
     return ans;
 }
 
+
+int diameterOfTree(Node *root) {
+    if (root == NULL) return 0; 
+
+    int op1 = diameterOfTree(root->left); 
+    int op2 = diameterOfTree(root->right); 
+
+    int op3 = maxDepth(root->left) + maxDepth(root->right); 
+
+    int ans = max(op1, max(op2, op3)); 
+    
+    return ans; 
+}
+
+
+
 int main() {
 
     Node *root = NULL; 
