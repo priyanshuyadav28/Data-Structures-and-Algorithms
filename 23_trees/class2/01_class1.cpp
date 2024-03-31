@@ -3,41 +3,79 @@
 #include <math.h>
 #include <numeric>
 #include <string>
-#include <algorithm> 
+#include <algorithm>
+#include <queue>
 
 using namespace std;
 
-class Node {
-    public: 
-    int data; 
-    Node *left; 
-    Node *right; 
+class Node
+{
+public:
+    int data;
+    Node *left;
+    Node *right;
 
-    Node(int data) {
-        this->data = data; 
-        left = NULL; 
-        right = NULL; 
+    Node(int data)
+    {
+        this->data = data;
+        left = NULL;
+        right = NULL;
     }
-}; 
+};
 
-Node* buildTree() {
-    int data; 
+Node *buildTree()
+{
+    int data;
 
-    cout << "Enter the data" << endl; 
-    cin>> data;     
+    cout << "Enter the data" << endl;
+    cin >> data;
 
-    Node *root = new Node(data); 
+    Node *root = new Node(data);
 
-    if (data == -1) return NULL; 
+    if (data == -1)
+        return NULL;
 
-    root->left = buildTree(); 
-    root->right = buildTree(); 
+    root->left = buildTree();
+    root->right = buildTree();
 
-    return root; 
-
+    return root;
 }
 
+void leverOrderTraversal(Node *root)
+{
+    queue<Node *> q;
 
+    q.push(root);
+    q.push(NULL);
+
+    while (!q.empty())
+    {
+        Node *tempNode = q.front();
+        q.pop();
+
+        if (tempNode == NULL)
+        {
+            cout << endl;
+            if (!q.empty())
+            {
+                q.push(NULL);
+            }
+        }
+        else
+        {
+            cout << tempNode->data << " ";
+
+            if (tempNode->left)
+            {
+                q.push(tempNode->left);
+            }
+            if (tempNode->right)
+            {
+                q.push(tempNode->right);
+            }
+        }
+    }
+}
 
 int height(Node *root)
 {
@@ -74,24 +112,33 @@ bool isBalanced(Node *root)
     return false;
 }
 
+int sumTree(Node *root)
+{
+    // base case
+    if (root == NULL)
+        return 0;
 
-int sumTree(Node *root) {
-    if (root == NULL) return 0;
+    int currentRootData = root->data;
+    int leftData = sumTree(root->left);
+    int rightData = sumTree(root->right);
 
-    int leftSum = sumTree(root->left); 
-    int rightSum = sumTree(root->right); 
+    root->data += leftData + rightData;
 
-    root->data += leftSum + rightSum; 
-
-    return root->data; 
+    return root->data;
 }
 
+int main()
+{
 
+    Node *root = NULL;
 
-int main() {
+    root = buildTree();
+    leverOrderTraversal(root);
 
+    cout << "Printing after sum Tree" << endl; 
 
+    sumTree(root);
+    leverOrderTraversal(root);
 
-
-    return 0; 
+    return 0;
 }
