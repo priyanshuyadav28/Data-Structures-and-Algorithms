@@ -127,6 +127,37 @@ int sumTree(Node *root)
     return root->data;
 }
 
+
+Node* lowestCommonAncestor(Node* root, Node* p, Node* q) {
+        // base case 
+        if (root == NULL) return NULL; 
+
+        if (root->data == p->data) return p; 
+
+        if (root->data == q->data) return q; 
+
+        // recursive calls in left and right
+
+        Node* leftAns = lowestCommonAncestor(root->left, p, q); 
+        Node* rightAns = lowestCommonAncestor(root->right, p, q); 
+
+        // you do not get ans from any side (left or right)
+        if (leftAns == NULL && rightAns == NULL) return NULL; 
+
+        // if ans from left is not null and right is null return the non NULL 
+        if (leftAns != NULL && rightAns == NULL) return leftAns; 
+        
+        // if ans from left is null and right is not null return non null 
+        if (leftAns == NULL && rightAns != NULL) return rightAns; 
+
+        // when from both side the ans is not null return the root node as it will the loweset common Ancesstor
+        return root; 
+
+    }
+
+
+
+
 int main()
 {
 
@@ -139,6 +170,8 @@ int main()
 
     sumTree(root);
     leverOrderTraversal(root);
+
+
 
     return 0;
 }
