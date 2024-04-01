@@ -127,7 +127,7 @@ int sumTree(Node *root)
     return root->data;
 }
 
-
+// Lc 236. Lowest Common Ancestor of a Binary Tree
 Node* lowestCommonAncestor(Node* root, Node* p, Node* q) {
         // base case 
         if (root == NULL) return NULL; 
