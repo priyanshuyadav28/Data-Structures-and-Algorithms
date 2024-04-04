@@ -99,6 +99,7 @@ Node* treeUsingInorderPreOrder (int inOrder[], int preOrder[], int size, int& pr
 
     Node* root = new Node(element); 
 
+    // hw implement this using map
     int pos = findPosition(inOrder, size, element); 
 
     // left case
