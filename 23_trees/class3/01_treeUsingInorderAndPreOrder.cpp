@@ -113,7 +113,7 @@ Node* treeUsingInorderPreOrder (int inOrder[], int preOrder[], int size, int& pr
 int main() {
 
     int inorder[] = {40, 20, 50, 10, 60, 30, 70}; 
-    int preorder[] = {10, 20, 40, 10, 50, 60, 70}; 
+    int preorder[] = {10, 20, 40, 50, 30, 60, 70}; 
 
     int size = 7; 
     int preIndex = 0; 
