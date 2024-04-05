@@ -111,6 +111,27 @@ Node* treeUsingInorderPreOrder (int inOrder[], int preOrder[], int size, int& pr
     return root; 
 }
 
+
+Node* treeUsingInorderPostOrder(int inOrder[], int postOrder[], int size, int postIndex, int inOrderStart, int inOrderEnd) {
+    if (postIndex < 0 || inOrderStart > inOrderEnd)
+    {
+        return NULL; 
+    }
+
+    int element = postOrder[postIndex--]; 
+    Node* root = new Node(element); 
+
+    int pos = findPosition(inOrder, size, element); 
+
+    // root->right
+    root->right = treeUsingInorderPostOrder(inOrder, postOrder, size, postIndex, pos + 1, inOrderEnd); 
+
+    // root->left
+    root->left = treeUsingInorderPostOrder(inOrder, postOrder, size, postIndex, inOrderStart, pos - 1); 
+
+    return root;     
+}
+
 int main() {
 
     int inorder[] = {40, 20, 50, 10, 60, 30, 70}; 
