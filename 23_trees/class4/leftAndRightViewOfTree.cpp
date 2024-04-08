@@ -93,8 +93,21 @@ void leftView(Node* root, int level, vector<int>& leftNode) {
 
     leftView(root->left, level + 1, leftNode); 
     leftView(root->right, level + 1, leftNode); 
-    
+}
 
+void rightView(Node* root, int level, vector<int>& leftNode) {
+    if (root == NULL) return; 
+
+    if (level == leftNode.size())
+    {
+        leftNode.push_back(root->data); 
+    }
+
+    // first right call 
+    leftView(root->right, level + 1, leftNode); 
+
+    // then left call 
+    leftView(root->left, level + 1, leftNode); 
 }
 
 int main() {
