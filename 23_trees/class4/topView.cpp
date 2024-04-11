@@ -98,7 +98,7 @@ void topViewPrint(Node* root) {
         int hd = temp.second; 
 
         // if for the current hd the answer already exist then do not store anything since we have to only print the top node 
-        // if the hd in the map is not found that is == topNode.end  
+        // if the hd in the map is not found that is == topNode.end that means it is on the first/top node of the tree and only that node we want to store.
         if (topNode.find(hd) == topNode.end()) {
             topNode[hd] = frontNode->data; 
         }
