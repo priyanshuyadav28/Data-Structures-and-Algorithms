@@ -103,7 +103,7 @@ vector<int> morrisTraversal(Node* root) {
         else { // when curr left != null then 
             // find predecessor: predecessor can be found by going once in curr->left and then going curr->right until curr rights reaches null  
             Node* pred = curr->left; 
-            while (pred->right)
+            while (pred->right != curr && pred->right)
             {
                 pred = pred->right; 
             }
