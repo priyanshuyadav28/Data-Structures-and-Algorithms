@@ -136,8 +136,10 @@ void rightBoundary(Node *root)
         return;
     }
     
-    if (root->right) leftBoundary(root->right);
-    if (root->left) leftBoundary(root->left);
+    if (root->right)
+        rightBoundary(root->right);
+    if (root->left)
+        rightBoundary(root->left);
 
     cout << root->data << " ";
 }
