@@ -131,6 +131,8 @@ int main() {
 
     levelOrderTraversal(root); 
 
+    topViewPrint(root); 
+
 
     return 0; 
 }
