@@ -122,13 +122,13 @@ void inOrderTraversal(Node* root) {
     inOrderTraversal(root->right);   
 }
 
-bool findNodeInBST(Node* root, int target) {
+Node* findNodeInBST(Node* root, int target) {
     if (root == NULL) {
-        return false; 
+        return NULL; 
     }
 
     if(target == root->data) {
-        return true; 
+        return root; 
     }
 
     if (target > root->data) {
@@ -168,6 +168,60 @@ int maxValueInBST(Node* root) {
     }
 
     return temp->data;     
+}
+
+int maxValueInBSTForDeletion(Node* root) {
+    Node* temp = root; 
+    if (root == NULL) {
+        return -1; 
+    }
+    while (temp->right)
+    {
+        temp = temp->right; 
+    }
+    
+    return temp->data; 
+    
+}
+
+Node* deleteNodeInBST(Node* root, int target) {
+    if (root == NULL) 
+        return NULL; 
+    
+    if (target == root->data) {
+        // now four cases exist 
+        // case 1: when both left and right node of target node are null
+        if (root->left == NULL && root->right == NULL) {
+            delete root;
+            return NULL; 
+        }
+        // case 2: when left child is NULL and right child is not null
+        else if (root->left == NULL && root->right != NULL) {
+            Node* child = root->right; 
+            return child; 
+        }
+        // case 3: when left is not null and right is NULL
+        else if (root->left != NULL && root->right == NULL) {
+            Node* child = root->left; 
+            return child; 
+        }else { // when left is also not null and right is also not null of the target node
+            int pred = maxValueInBSTForDeletion(root->left); 
+            root->data = pred; 
+            root->left = deleteNodeInBST(root->left, pred); 
+            return root; 
+        }
+    }
+    else {
+        if (target > root->data) {
+            root->right = deleteNodeInBST(root->right, target); 
+
+        }
+        else if (target < root->data) {
+            root->left = deleteNodeInBST(root->left, target); 
+        }
+
+        return root; 
+    }
 }
 
 int main() {
