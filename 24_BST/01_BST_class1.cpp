@@ -240,12 +240,17 @@ int main() {
     // bool found = findNodeInBST(root, 15); 
     // cout << found << endl; 
 
-    int minElement = minValueInBST(root); 
+    // int minElement = minValueInBST(root); 
 
-    cout << "Min value in BST is " << minElement << endl; 
+    // cout << "Min value in BST is " << minElement << endl; 
 
-    int maxElement = maxValueInBST(root); 
-    cout << "Max value in BST is " << maxElement << endl; 
+    // int maxElement = maxValueInBST(root); 
+    // cout << "Max value in BST is " << maxElement << endl; 
+
+    cout << "Deleting Node in BST" << endl; 
+
+    root = deleteNodeInBST(root, 100); 
+    levelOrderTraversal(root); 
 
     return 0; 
 }
