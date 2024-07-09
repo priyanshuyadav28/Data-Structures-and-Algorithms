@@ -138,21 +138,103 @@ void lognestCommonPrefix(string first, string& ans, TrieNode* root) {
         }
     }
 }
+
+
+void storeSuggestion(TrieNode* curr, vector<string>& temp, string& prefix) {
+    if (curr->isTerminal) {
+        temp.push_back(prefix); 
+    }
+
+    // a to z choice 
+
+    for(char ch = 'a'; ch <= 'z'; ch++) {
+        int index = ch - 'a'; 
+        TrieNode* next = curr->children[index]; 
+
+        if (next != NULL) {
+            prefix.push_back(ch);   
+            storeSuggestion(next, temp, prefix);
+            prefix.pop_back();  
+        }
+    }
+
+
+}
+
+
+vector<vector<string>> getSuggestions(TrieNode* root, string str) {
+    
+    TrieNode* prev = root; 
+    vector<vector<string>> ans; 
+    string prefix = ""; 
+
+    for(int i = 0; i < str.length(); i++) {
+        char ch = str[i]; 
+        int index = ch - 'a';
+
+        TrieNode* curr = prev->children[index]; 
+        if (curr == NULL) {
+            break;
+        }
+        else {
+            vector<string> temp; 
+            prefix.push_back(ch); 
+
+            storeSuggestion(curr, temp, prefix); 
+            
+            ans.push_back(temp); 
+            prev = curr; 
+        }
+    }
+    return ans; 
+}
+
+
+
 int main() {
 
-    // longest common prefix using trie
-    vector<string> arr = {"code", "coder", "coding", "codehelp"};
+    vector<string> v; 
+    v.push_back("love");
+    v.push_back("lover");
+    v.push_back("loving");
+    v.push_back("last");
+    v.push_back("lost");
+    v.push_back("lane");
+    v.push_back("lord");
+    
+    string input = "lovi"; 
+
     TrieNode* root = new TrieNode('-'); 
 
-    for(int i = 0; i < arr.size(); i++) {
-        insertWord(root, arr[i]); 
-    }   
+    for(int i = 0; i < v.size(); i++) {
+        insertWord(root, v[i]); 
+    }
 
-    string ans = ""; 
-    string first = arr[0]; 
-    lognestCommonPrefix(first, ans, root);  
+    vector<vector<string>> ans = getSuggestions(root, input); 
 
-    cout << ans << endl; 
+    cout << "Printing Suggestion " << endl; 
+
+    for(int i = 0; i < ans.size(); i++) {
+        for(int j = 0; j < ans[i].size(); j++) {
+            cout << ans[i][j] << " "; 
+        }
+        cout << endl; 
+    }
+
+
+    // longest common prefix using trie
+    // vector<string> arr = {"code", "coder", "coding", "codehelp"};
+    // TrieNode* root = new TrieNode('-'); 
+
+    // for(int i = 0; i < arr.size(); i++) {
+    //     insertWord(root, arr[i]); 
+    // }   
+
+    // string ans = ""; 
+    // string first = arr[0]; 
+    // lognestCommonPrefix(first, ans, root);  
+
+    // cout << ans << endl; 
 
 
 
