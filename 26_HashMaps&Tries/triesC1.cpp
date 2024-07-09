@@ -12,6 +12,7 @@ class TrieNode {
     char data; 
     TrieNode* children[26]; 
     bool isTerminal; 
+    int childCount; 
 
     TrieNode (char d) {
         this->data = d; 
@@ -19,7 +20,7 @@ class TrieNode {
         for(int i = 0; i < 26; i++) {
             children[i] = NULL; 
         }
-
+        childCount = 0; 
         this->isTerminal = false;
     }   
 }; 
@@ -41,6 +42,7 @@ void insertWord(TrieNode* root, string word) {
     }
     else {
         child = new TrieNode(ch); 
+        root->childCount++; 
         root->children[index] = child; 
     }
 
@@ -89,20 +91,92 @@ void deleteTrieNode(TrieNode* root, string word) {
     }
 }
 
+string longestPrefixInString(vector<string> arr) {
+    string ans = ""; 
+    bool isMatched = true; 
+
+    for (int i = 0; i < arr[0].size(); i++) {
+        char ch = arr[0][i]; 
+
+        for(int j = 1; j < arr.size(); j++) {
+            if (arr[j][i] != ch) {
+                isMatched = false; 
+                break; 
+            }
+        }
+        if (isMatched)
+        {
+            ans.push_back(ch);
+        }
+        else {
+            break;
+        }       
+
+    }
+
+    return ans; 
+}
+
+// using trie 
+void lognestCommonPrefix(string first, string& ans, TrieNode* root) {
+    if (root->isTerminal)
+        return; 
+        
+    for(int i = 0; i < first.length(); i++) {
+        char ch = first[i]; 
+
+        if (root->childCount == 1) {
+            ans.push_back(ch); 
+            int index = ch - 'a'; 
+            root = root->children[index]; 
+        }
+        else {
+            break;
+        }
+        if (root->isTerminal) {
+            break;
+        }
+    }
+}
 int main() {
 
+    // longest common prefix using trie
+    vector<string> arr = {"code", "coder", "coding", "codehelp"};
     TrieNode* root = new TrieNode('-'); 
-    insertWord(root, "coding"); 
-    insertWord(root, "code"); 
-    insertWord(root, "coder"); 
-    insertWord(root, "codehelp"); 
-    insertWord(root, "baba"); 
-    insertWord(root, "baby"); 
-    insertWord(root, "babbar"); 
 
-    cout << searchInTrieNode(root, "baba") << endl; 
-    deleteTrieNode(root, "bobby"); 
-    cout << searchInTrieNode(root, "bobby"); 
+    for(int i = 0; i < arr.size(); i++) {
+        insertWord(root, arr[i]); 
+    }   
+
+    string ans = ""; 
+    string first = arr[0]; 
+    lognestCommonPrefix(first, ans, root);  
+
+    cout << ans << endl; 
+
+
+
+    // TrieNode* root = new TrieNode('-'); 
+    // insertWord(root, "coding"); 
+    // insertWord(root, "code"); 
+    // insertWord(root, "coder"); 
+    // insertWord(root, "codehelp"); 
+    // insertWord(root, "baba"); 
+    // insertWord(root, "baby"); 
+    // insertWord(root, "babbar"); 
+
+    // cout << searchInTrieNode(root, "baba") << endl; 
+    // deleteTrieNode(root, "bobby"); 
+    // cout << searchInTrieNode(root, "bobby"); 
+
+    // vector<string> arr = {"code", "coder", "coding", "codehelp"}; 
+    
+    // string ans = longestPrefixInString(arr); 
+
+    // cout << ans << endl; 
+
+
+
 
     return 0; 
 }
