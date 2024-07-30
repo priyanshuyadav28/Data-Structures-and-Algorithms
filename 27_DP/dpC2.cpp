@@ -55,19 +55,48 @@ int coinChangeTabulation(vector<int>& coins, int amount) {
     return dp[amount]; 
 }
 
+int rob(vector<int> &nums, int n, vector<int> &dp)
+{
+    if (n < 0)
+    {
+        return 0;
+    }
+
+    if (n == 0)
+    {
+        return nums[0];
+    }
+
+    if (dp[n] != -1)
+    {
+        return dp[n];
+    }
+
+    int include = rob(nums, n - 2, dp) + nums[n];
+    int exclude = rob(nums, n - 1, dp) + 0;
+
+    dp[n] = max(include, exclude);
+    return dp[n];
+}
+
 int main() {
 
-    vector<int> coins = {1, 2, 5}; 
+    // vector<int> coins = {1, 2, 5}; 
 
-    int amount = 11; 
+    // int amount = 11; 
 
-    vector<int> dp(amount + 1, -1); 
+    // vector<int> dp(amount + 1, -1); 
 
-    int ans = coinChange(coins, amount, dp); 
+    // int ans = coinChange(coins, amount, dp); 
     
-    cout << "Min coins to create " << amount << " is " << ans << endl; 
+    // cout << "Min coins to create " << amount << " is " << ans << endl;
 
+    vector<int> nums = {1, 2, 3, 1}; 
 
+    int n = nums.size() - 1;
+    vector<int> dp(n + 1, -1);
+
+    cout << rob(nums, n, dp) << endl; 
 
     return 0; 
 }
